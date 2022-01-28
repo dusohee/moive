@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+crossorigin="anonymous"></script>
+
+<title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+</head>
+
+<style>
+    *{
+        font-family: 'Gowun Dodum', sans-serif;
+    }
+    .movieTitle{
+        background-color: gold;
+        width: 100%;
+        height: 300px;
+        background-image: linear-gradient(0deg, rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2372&q=80");
+        background-position: center;
+        background-size: cover;
+
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .movieTitle > h1{
+        margin-bottom: 20px;
+    }
+    .movieTitle > button{
+        width: 200px;
+        height: 50px;
+        background-color: transparent;
+        color: white;
+        border-radius: 2px;
+        border: 1px solid white;
+    }
+    .movieTitle > button:hover{
+        border: 2px solid white;
+    }
+    .comment{
+        color: gray;
+    }
+    .wrap{
+        max-width: 1200px;
+        width: 95%;
+        margin: auto;
+    }
+    .post{
+        max-width:500px;
+        width:95%;
+        /*background-color: gold;*/
+        margin: 50px auto 50px auto;
+        box-shadow: 0 0 3px 0;
+        padding: 20px;
+    }
+    textarea{
+        width: 100%;
+        height: 100px;
+        border: 1px solid grey;
+        border-radius: 5px;
+        margin: 20px 0 0 0;
+    }
+    .submitBtn{
+        width:120px;
+        background-color: black;
+        color: white;
+        margin-right: 20px;
+    }
+    .closeBtn{
+        width:120px;
+        background-color: white;
+        color: black;
+
+    }
+    .formBtn{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<script>
+  $.ajax({
+  type: "GET",
+  url: "http://spartacodingclub.shop/sparta_api/seoulair",
+  data: {},
+  success: function (response) {
+    let mise_list = response["RealtimeCityAir"]["row"];
+    for (let i = 0; i < mise_list.length; i++) {
+      let mise = mise_list[i];
+      let gu_name = mise["MSRSTE_NM"];
+      let gu_mise = mise["IDEX_MVL"];
+      console.log(gu_name, gu_mise);
+    }
+  }
+});
+</script>
+
+
+<body>
+<div class="movieTitle">
+    <h1>내 생애 최고의 영화들</h1>
+    <button>영화기록하기</button>
+</div>
+<div class="post">
+    <div class="form-floating mb-3">
+        <input type="url" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">moive url</label>
+    </div>
+
+    <div class="form-floating">
+        <div class="input-group mb-1">
+            <label class="input-group-text" for="inputGroupSelect01">별점</label>
+            <select class="form-select" id="inputGroupSelect01">
+                <option selected>선택하기</option>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="3">⭐⭐⭐⭐</option>
+                <option value="3">⭐⭐⭐⭐⭐</option>
+
+            </select>
+        </div>
+    </div>
+
+    <textarea>
+  At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+  </textarea>
+    <br><br>
+    <div class="formBtn">
+        <input class="submitBtn" type="submit" value="제출하기">
+    <input class="closeBtn" type="button" value="닫기">
+    </div>
+
+</div>
+
+
+<div class="wrap">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+                     height="400px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">blue guy</h5>
+                    <p class="card-text">여기에 내용이 들어감</p>
+                    <p>⭐⭐⭐</p>
+                    <p class="comment">재밌었어요</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1496951658395-5ea43dc50c3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+                     height="400px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">rainbow guy</h5>
+                    <p class="card-text">여기에 내용이 들어감</p>
+                    <p>⭐⭐⭐</p>
+                    <p class="comment">재밌었어요</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1508043793157-1c607df5d697?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+                     height="400px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">forest guy</h5>
+                    <p class="card-text">여기에 내용이 들어감</p>
+                    <p>⭐⭐⭐</p>
+                    <p class="comment">재밌었어요</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1622589856147-b9edaf3adc50?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80"
+                     height="400px" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">snow guy</h5>
+                    <p class="card-text">여기에 내용이 들어감</p>
+                    <p>⭐⭐⭐</p>
+                    <p class="comment">재밌었어요</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
